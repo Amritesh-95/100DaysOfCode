@@ -1,0 +1,36 @@
+import java.util.Arrays;
+
+public class SortedSquares {
+
+    public int[] sortedSquares(int[] nums) {
+        int n = nums.length;
+        int[] result = new int[n];
+
+        int i = 0;
+        int j = n - 1;
+        int k = n - 1;
+        
+        while (k >= 0) {
+            int isquare = nums[i] * nums[i];
+            int jsquare = nums[j] * nums[j];
+
+            if (isquare > jsquare) {
+                result[k] = isquare;
+                i++;
+            } else {
+                result[k] = jsquare;
+                j--;
+            }
+            k--;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        SortedSquares solution = new SortedSquares();
+
+        int[] input1 = {-4, -1, 0, 3, 10};
+        int[] output1 = solution.sortedSquares(input1);
+        System.out.println("Test Case 1: " + Arrays.toString(output1));
+    }
+}
